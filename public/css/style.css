@@ -1,0 +1,42 @@
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+.v-enter-from {
+  -webkit-transform: translateX(-200px);
+          transform: translateX(-200px);
+  opacity: 0;
+}
+
+.v-enter-active {
+  -webkit-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+}
+
+.v-enter-to {
+  opacity: 1;
+}
+
+.v-leave-from {
+  opacity: 1;
+}
+
+.v-leave-active {
+  -webkit-transition: all .5s ease-in;
+  transition: all .5s ease-in;
+}
+
+.v-leave-to {
+  -webkit-transform: translateX(200px);
+          transform: translateX(200px);
+  opacity: 0;
+}
+/*# sourceMappingURL=style.css.map */

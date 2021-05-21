@@ -2,47 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Basic Setup</title>
+  <title>CSS Classes</title>
   <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css'>
   <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
   <script src='https://unpkg.com/vue@next'>
   </script><script  src="js/script.js"></script>
 </head>
-<body class="container mt-5">
+<body class="container">
 
 <!-- App Template Code Here -->
 <div id="app">
-  <h1>{{ name }}</h1>
-</div>
-<hr>
-
-<div id="anotherApp">
-  <h1>{{ name }}</h1>
+  <div :class="myClass">CSS Class</div>
 </div>
 <!-- App Template Code Here -->
 
 <!-- App Script Code Here -->
 <script>
-// createApp via variable
-const App = {
-  data() {
-    return {
-      name: 'Bamboo Thermal Ski Coat',
-    }
-  }
-}
-Vue.createApp(App).mount('#app')
-
-// createApp via Object
 Vue.createApp({
   data() {
     return {
-      name: 'Polo Shirt'
+      myClass: {
+        color: 'blue',
+        fontWeight: 200,
+        fontSize: '5em'
+      }
     }
   }
-}).mount('#anotherApp')
+}).mount('#app')
 </script>
 <!-- App Script Code Here -->
 
 </body>
 </html>
+

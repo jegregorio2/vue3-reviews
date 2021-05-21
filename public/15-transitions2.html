@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Transitions</title>
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <script src='https://unpkg.com/vue@next'>
+  // <link href="css/style.css" type="text/css" rel="stylesheet" />
+  </script><script  src="js/script.js"></script>
+</head>
+<body class="container">
+
+<!-- App Template Code Here -->
+<div id="app" class="text-center"> 
+  <button class="btn" :class="btnColor" @click="showMe = !showMe">Go</button>
+<transition enter-active-class="animate__animated animate__flipInY"
+            leave-active-class="animate__animated animate__rotateOut"
+            @enter="transitionColor"
+            @enter-cancelled="successColor"
+            @after-enter="successColor"
+            @leave="transitionColor"
+            @after-leave="resetColor"
+            >
+  <h2 v-if="showMe">Animate Me</h2> 
+</transition>
+</div>
+<!-- App Template Code Here -->
+
+<!-- App Script Code Here -->
+<script>
+Vue.createApp({
+  data() {
+    return {
+      showMe: false,
+      btnColor: 'btn-secondary',
+      nextThing: true,
+    }
+  },
+  methods: {
+    transitionColor(el) {
+      this.btnColor='btn-warning';
+      console.log(el)
+    },
+    activeColor() {
+      this.btnColor='btn-secondary';
+    },
+    successColor() {
+      this.btnColor='btn-success';
+    },
+    resetColor() {
+      this.btnColor='btn-secondary';
+    }
+  }
+}).mount('#app')
+</script>
+<!-- App Script Code Here -->
+
+</body>
+</html>
+

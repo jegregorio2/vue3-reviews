@@ -2,47 +2,46 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Basic Setup</title>
+  <title>Numbers</title>
   <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css'>
   <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
   <script src='https://unpkg.com/vue@next'>
   </script><script  src="js/script.js"></script>
 </head>
-<body class="container mt-5">
+<body class="container">
 
 <!-- App Template Code Here -->
 <div id="app">
-  <h1>{{ name }}</h1>
-</div>
-<hr>
-
-<div id="anotherApp">
-  <h1>{{ name }}</h1>
+  <div>
+    <!-- rendering list using number -->
+    <span v-for="n in 10">{{ n }}</span>
+  </div>
+  <div>
+    <!-- rendering list using number -->
+    <li v-for="n in evenNumbers">{{ n }}</li>
+  </div>
 </div>
 <!-- App Template Code Here -->
 
 <!-- App Script Code Here -->
 <script>
-// createApp via variable
-const App = {
-  data() {
-    return {
-      name: 'Bamboo Thermal Ski Coat',
-    }
-  }
-}
-Vue.createApp(App).mount('#app')
-
-// createApp via Object
 Vue.createApp({
   data() {
     return {
-      name: 'Polo Shirt'
+      numbers: [1, 2, 3, 4, 5, 6]
     }
-  }
-}).mount('#anotherApp')
+  },
+  computed: {
+    evenNumbers: function() {
+      return this.numbers.filter(function (number) {
+        return number % 2 === 0
+      })
+    }
+  },
+}).mount('#app')
 </script>
 <!-- App Script Code Here -->
 
 </body>
 </html>
+

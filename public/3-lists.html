@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lists</title>
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
+  <script src='https://unpkg.com/vue@next'>
+  </script><script  src="js/script.js"></script>
+</head>
+<body class="container">
+
+<!-- App Template Code Here -->
+<div id="images">
+  <!-- rendering list using index -->
+  <div v-for="(item, index) in products" id="item-list" class="">
+    <div>
+      <img
+        class="img-fluid"
+        :src="item.image"
+        :alt="item.name"
+      />
+      <h1>{{ item.name }}</h1>
+    </div>
+  </div>
+</div>
+<!-- App Template Code Here -->
+
+<!-- App Script Code Here -->
+<script>
+Vue.createApp({
+  data() {
+    return {
+      products: [
+        {
+          "image": "img/bee.png",
+          "name": "bee"
+        },
+        {
+          "image": "img/bike2.png",
+          "name": "bike2"
+        },
+        {
+          "image": "img/github.png",
+          "name": "github"
+        },
+        {
+          "image": "img/react-cyan.png",
+          "name": "react-cyan"
+        },
+        {
+          "image": "img/rocket.png",
+          "name": "rocket"
+        },
+        {
+          "image": "img/rubik cube-purple-white-blue.png",
+          "name": "rubik cube-purple-white-blue"
+        },
+        {
+          "image": "img/spider-circle.png",
+          "name": "spider-circle"
+        },
+        {
+          "image": "img/viking-green.png",
+          "name": "viking-green"
+        },
+      ]
+    }
+  }
+}).mount('#images')
+</script>
+<!-- App Script Code Here -->
+
+</body>
+</html>
+

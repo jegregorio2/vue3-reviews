@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>if-else</title>
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
+  <script src='https://unpkg.com/vue@next'>
+  </script><script  src="js/script.js"></script>
+</head>
+<body class="container">
+
+<!-- App Template Code Here -->
+<div id="app">
+  <!-- v-if, v-else -->
+  <div v-if="myBool">I made it!</div>
+  <div v-else="myBool">Awww shucks!</div>
+
+  <!-- v-if, v-else-if, v-else -->
+  <div v-if="myMeal=='breakfast'">Cereal or Yogurt</div>
+  <div v-else-if="myMeal=='lunch'">Tomato</div>
+  <div v-else-if="myMeal=='dinner'">Pork Chop</div>
+  <div v-else="">How about a nice snack!</div>
+
+  <!-- hide container using <template> -->
+  <div v-if="myBool">
+    <h1>hiding?</h1>
+  </div>
+
+  <template v-if="myBool">
+    <h1>hiding?</h1>
+  </template>
+
+  <!-- hide with v-show, only hides display, doesn't support template or v-else -->
+  <div v-show="myBool">I'm hiding!</div>
+</div>
+<!-- App Template Code Here -->
+
+<!-- App Script Code Here -->
+<script>
+Vue.createApp({
+  data() {
+    return {
+      myBool: true,
+      myMeal: ''
+    }
+  }
+}).mount('#app')
+</script>
+<!-- App Script Code Here -->
+
+</body>
+</html>
+

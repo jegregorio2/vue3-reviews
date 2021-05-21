@@ -2,47 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Basic Setup</title>
+  <title>Inline Styles</title>
   <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css'>
   <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
   <script src='https://unpkg.com/vue@next'>
   </script><script  src="js/script.js"></script>
 </head>
-<body class="container mt-5">
+<body class="container">
 
 <!-- App Template Code Here -->
 <div id="app">
-  <h1>{{ name }}</h1>
-</div>
-<hr>
-
-<div id="anotherApp">
-  <h1>{{ name }}</h1>
+  <!-- binding with :style -->
+  <div :style="{
+    color: 'blue',
+    'font-weight': myWeight,
+    fontSize: mySize + 'em'}">Headline</div>
+  <!-- object notation -->
+  <div :style="myStyles">Headline</div>
 </div>
 <!-- App Template Code Here -->
 
 <!-- App Script Code Here -->
 <script>
-// createApp via variable
-const App = {
-  data() {
-    return {
-      name: 'Bamboo Thermal Ski Coat',
-    }
-  }
-}
-Vue.createApp(App).mount('#app')
-
-// createApp via Object
 Vue.createApp({
   data() {
     return {
-      name: 'Polo Shirt'
+      myColor: 'red',
+      myWeight: 400,
+      mySize: 3,
+      myStyles: {
+        color: 'green',
+        fontWeight: 700,
+        fontSize: '5em'
+      }
     }
   }
-}).mount('#anotherApp')
+}).mount('#app')
 </script>
 <!-- App Script Code Here -->
 
 </body>
 </html>
+
