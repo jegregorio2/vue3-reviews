@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Components Events</title>
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <script src='https://unpkg.com/vue@next'>
+  // <link href="css/style.css" type="text/css" rel="stylesheet" />
+  </script><script  src="js/script.js"></script>
+</head>
+<body class="container">
+
+<!-- App Template Code Here -->
+<div id="app">
+  <text-btn @my-event="displayText += $event" label="Sentence"></text-btn> 
+  <text-btn @my-event="byWord" label="By Word"></text-btn> 
+  <p class="mt-2">{{displayText}}</p>
+</div>
+
+<div id="app2">
+  <fancy-search v-model="keywords"></fancy-search>
+  <div class="form-text mb-2" v-if="keywords"><b class="text-success">Search for</b>: {{keywords}}</div>
+</div>
+<!-- App Template Code Here -->
+
+<!-- App Script Code Here -->
+<script>
+// creating components
+const App = Vue.createApp({
+  data() { 
+    return { 
+      displayText: '', 
+      counter: 0 
+    }
+  },
+  methods: {
+    byWord(text) {
+      this.displayText += text.split(" ")[this.counter++] + ' '
+    }
+  }
+})
+App.component('textBtn', {
+  data() {
+    return {
+      sentence: 'The quick brown fox jumps over the lazy dog'
+    }
+  },
+  props: ['label'],
+  template: `<button @click="$emit('myEvent', sentence)" class="btn btn-primary mr-2">{{label}}</button>`,
+})
+
+App.mount('#app')
+// ---------------------------------------------------------- //
+const App2 = Vue.createApp({
+  data() {
+    return {
+      keywords: ''
+    }
+  }
+})
+
+App2.component('fancy-search', {
+  props: ['modelValue'],
+  template: `
+    <div class="input-group mb-1">
+      <input :value="modelValue" @input="$emit('update:modelValue', $event.target.value)"
+        type="text" class="form-control" placeholder="" aria-label="Fancy Search Input" aria-describedby="button-search">
+      <button class="btn btn-success" type="button" id="button-search">Search</button>
+    </div>
+  `
+})
+
+App2.mount('#app2')
+</script>
+<!-- App Script Code Here -->
+
+</body>
+</html>
+
